@@ -62,7 +62,49 @@ const getPosts = async (req, res) => {
   }
 };
 
+// @desc    Get single post by ID
+// @route   GET /api/posts/:id
+// @access  Public
+const getPostById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: post,
+      message: 'Post retrieved successfully'
+    });
+
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    
+    // Handle invalid ObjectId format
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid post ID format'
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: 'Server error while fetching post',
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   createPost,
-  getPosts
+  getPosts,
+  getPostById
 };
