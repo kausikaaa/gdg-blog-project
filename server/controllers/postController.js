@@ -38,6 +38,31 @@ const createPost = async (req, res) => {
   }
 };
 
+// @desc    Get all posts
+// @route   GET /api/posts
+// @access  Public
+const getPosts = async (req, res) => {
+  try {
+    const posts = await Post.find().sort({ datePosted: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: posts.length,
+      data: posts,
+      message: 'Posts retrieved successfully'
+    });
+
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error while fetching posts',
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
-  createPost
+  createPost,
+  getPosts
 };
