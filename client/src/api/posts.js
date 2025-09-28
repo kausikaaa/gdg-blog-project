@@ -42,3 +42,21 @@ export const createPost = async (postData) => {
     throw error;
   }
 };
+
+// Update a post
+export const updatePost = async (id, postData) => {
+  try {
+    // Get token from localStorage
+    const token = localStorage.getItem('token');
+    
+    const response = await api.put(`/api/posts/${id}`, postData, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating post:', error);
+    throw error;
+  }
+};
