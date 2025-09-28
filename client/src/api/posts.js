@@ -60,3 +60,21 @@ export const updatePost = async (id, postData) => {
     throw error;
   }
 };
+
+// Delete a post
+export const deletePost = async (id) => {
+  try {
+    // Get token from localStorage
+    const token = localStorage.getItem('token');
+    
+    const response = await api.delete(`/api/posts/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    throw error;
+  }
+};
