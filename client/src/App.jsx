@@ -7,6 +7,7 @@ import './App.css';
 import Layout from './components/Layout';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/posts/:id" element={<SinglePost />} />
-          <Route path="/create" element={<CreatePost />} />
-          <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/create" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
+          <Route path="/edit/:id" element={<ProtectedRoute><EditPost /></ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
