@@ -14,25 +14,28 @@ const PostCard = ({ post }) => {
   };
 
   return (
-    <div className="card rounded-2xl transition-colors shadow-card hover:shadow-cardHover duration-300 p-5 sm:p-6 border hover:border-accent/40 hover:bg-white/95 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800/90">
+    <div className="group card rounded-2xl shadow-cardLg hover:shadow-cardHover transition-all duration-300 p-5 sm:p-6 border hover:border-accent/40 hover:bg-white/95 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800/90 hover:-translate-y-0.5">
       <div className="mb-4">
-        <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-2 line-clamp-2">
           {post.title}
         </h2>
-        <div className="flex flex-wrap items-center gap-x-2 text-sm text-gray-600 dark:text-gray-300 mb-3">
-          <span className="font-medium">By {post.author}</span>
-          <span className="hidden sm:inline">•</span>
-          <span>{formatDate(post.datePosted)}</span>
-        </div>
+        <div className="h-1 w-12 bg-accent rounded-full mb-3 opacity-80 group-hover:opacity-100 transition-opacity" />
       </div>
-      
-      <div className="mb-4">
-        <p className="text-gray-700 dark:text-gray-200 line-clamp-4 sm:line-clamp-3">
+
+      <div className="mb-5">
+        <p className="text-gray-700 dark:text-gray-200 leading-relaxed line-clamp-3 sm:line-clamp-2">
           {post.content}
         </p>
       </div>
-      
-      <div className="flex justify-end">
+
+      <div className="mt-auto flex items-center justify-between text-sm text-gray-600 dark:text-gray-300">
+        <div className="flex items-center gap-2">
+          <span className="font-medium">By {post.author}</span>
+        </div>
+        <span>{formatDate(post.datePosted)}</span>
+      </div>
+
+      <div className="mt-4 flex justify-end">
         <Link
           to={`/posts/${post._id}`}
           className="btn-primary"
