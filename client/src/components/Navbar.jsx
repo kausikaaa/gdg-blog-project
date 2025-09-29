@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/60 backdrop-blur-lg supports-[backdrop-filter]:bg-white/50 border-b border-white/40 ring-1 ring-black/5 shadow-sm dark:bg-gray-900/50 dark:supports-[backdrop-filter]:bg-gray-900/40 dark:border-white/10 dark:ring-white/10">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-3 items-center h-16">
           {/* Left: Logo/Title */}
           <div className="flex items-center gap-3">
