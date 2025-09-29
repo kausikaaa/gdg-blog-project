@@ -9,38 +9,41 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/60 backdrop-blur-lg supports-[backdrop-filter]:bg-white/50 border-b border-white/40 ring-1 ring-black/5 dark:bg-gray-900/50 dark:supports-[backdrop-filter]:bg-gray-900/40 dark:border-white/10 dark:ring-white/10">
+    <header className="sticky top-0 z-40 bg-white/60 backdrop-blur-lg supports-[backdrop-filter]:bg-white/50 border-b border-white/40 ring-1 ring-black/5 shadow-sm dark:bg-gray-900/50 dark:supports-[backdrop-filter]:bg-gray-900/40 dark:border-white/10 dark:ring-white/10">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="grid grid-cols-3 items-center h-16">
+          {/* Left: Logo/Title */}
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-2">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white font-bold">B</span>
               <span className="text-lg font-semibold">Blog</span>
             </Link>
-            <div className="hidden sm:flex items-center gap-2 sm:gap-4 ml-6">
+          </div>
+          {/* Center: Primary Links */}
+          <div className="hidden sm:flex items-center justify-center gap-2 sm:gap-4">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-accent bg-accent/10 dark:text-accent/90 dark:bg-accent/10' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-white/5'}`
+              }
+              end
+            >
+              Home
+            </NavLink>
+            {isAuthenticated && (
               <NavLink
-                to="/"
+                to="/create"
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-accent bg-accent/10 dark:text-accent/90 dark:bg-accent/10' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-white/5'}`
                 }
-                end
               >
-                Home
+                Create Post
               </NavLink>
-              {isAuthenticated && (
-                <NavLink
-                  to="/create"
-                  className={({ isActive }) =>
-                    `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-accent bg-accent/10 dark:text-accent/90 dark:bg-accent/10' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-white/5'}`
-                  }
-                >
-                  Create
-                </NavLink>
-              )}
-            </div>
+            )}
           </div>
 
-          <div className="flex items-center gap-2">
+          {/* Right: Theme toggle + Auth */}
+          <div className="flex items-center justify-end gap-2">
             <button
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
@@ -82,7 +85,7 @@ const Navbar = () => {
                 <button onClick={logout} className="inline-flex items-center px-4 py-2 rounded-md bg-gray-900 text-white hover:bg-black transition-colors duration-200 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white">Logout</button>
               </>
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-2">
                 <Link to="/login" className="px-3 py-2 text-sm font-medium text-gray-800 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white">Login</Link>
                 <Link to="/register" className="inline-flex items-center px-4 py-2 rounded-md bg-accent text-white hover:bg-accent/90 transition-colors duration-200">Sign up</Link>
               </div>
