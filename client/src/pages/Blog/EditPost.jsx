@@ -177,7 +177,7 @@ const EditPost = () => {
 
         {/* Form */}
         <div className="bg-white rounded-2xl shadow-cardLg hover:shadow-cardHover border border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          <form onSubmit={handleSubmit} className="p-8 md:p-10 space-y-7">
             {/* Error Message */}
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -196,7 +196,7 @@ const EditPost = () => {
 
             {/* Title Field */}
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="title" className="block text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
                 Title *
               </label>
               <input
@@ -213,7 +213,7 @@ const EditPost = () => {
 
             {/* Content Field */}
             <div>
-              <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
+              <label htmlFor="content" className="block text-base font-semibold text-gray-800 dark:text-gray-100 mb-2">
                 Content *
               </label>
               <textarea
@@ -229,7 +229,7 @@ const EditPost = () => {
             </div>
 
             {/* Submit Button */}
-            <div className="flex flex-col sm:flex-row justify-end gap-3 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row justify-end gap-4">
               <Link
                 to={`/posts/${id}`}
                 className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors duration-200 dark:text-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800"

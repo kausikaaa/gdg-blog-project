@@ -68,7 +68,7 @@ const HomePage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10">
         {/* Header */}
         <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
+          <div className="flex-1 text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-2 dark:text-white">Blog Posts</h1>
             <p className="text-gray-600 dark:text-gray-300">Discover the latest stories and insights</p>
           </div>
