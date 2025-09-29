@@ -122,7 +122,7 @@ const SinglePost = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Back button */}
         <div className="mb-6">
           <Link
@@ -137,10 +137,10 @@ const SinglePost = () => {
         </div>
 
         {/* Article */}
-          <article className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-800">
+          <article className="bg-white rounded-2xl shadow-cardLg overflow-hidden dark:bg-gray-800">
           {/* Header */}
           <div className="px-6 py-8 border-b border-gray-200 dark:border-gray-700">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4 leading-tight dark:text-white">
               {post.title}
             </h1>
             <div className="h-1 w-16 bg-accent rounded-full mb-4" />
@@ -199,8 +199,8 @@ const SinglePost = () => {
 
           {/* Content */}
           <div className="px-6 py-8">
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <div className="text-gray-700 leading-relaxed whitespace-pre-wrap dark:text-gray-200">
+            <div className="article max-w-none">
+              <div className="whitespace-pre-wrap">
                 {post.content}
               </div>
             </div>
