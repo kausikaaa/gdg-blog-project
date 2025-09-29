@@ -7,8 +7,8 @@ const router = express.Router();
 // GET /api/posts - Get all posts
 router.get('/', getPosts);
 
-// POST /api/posts - Create a new post
-router.post('/', createPost);
+// POST /api/posts - Create a new post (Protected)
+router.post('/', protect, createPost);
 
 // GET /api/posts/:id - Get single post by ID
 // PUT /api/posts/:id - Update a post (Protected)

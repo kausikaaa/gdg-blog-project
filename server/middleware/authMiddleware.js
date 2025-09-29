@@ -28,9 +28,9 @@ const protect = async (req, res, next) => {
       const user = await User.findById(decoded.userId).select('-password');
       
       if (!user) {
-        return res.status(401).json({
+        return res.status(403).json({
           success: false,
-          message: 'Token is valid but user no longer exists.'
+          message: 'Forbidden. User no longer exists.'
         });
       }
 
@@ -40,7 +40,7 @@ const protect = async (req, res, next) => {
     } catch (error) {
       // Token verification failed
       if (error.name === 'JsonWebTokenError') {
-        return res.status(401).json({
+        return res.status(403).json({
           success: false,
           message: 'Invalid token.'
         });

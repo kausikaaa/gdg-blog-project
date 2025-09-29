@@ -2,7 +2,7 @@ const Post = require('../models/Post');
 
 // @desc    Create a new post
 // @route   POST /api/posts
-// @access  Public
+// @access  Private (Authenticated)
 const createPost = async (req, res) => {
   try {
     const { title, content, author } = req.body;
@@ -15,11 +15,11 @@ const createPost = async (req, res) => {
       });
     }
 
-    // Create new post
+    // Create new post; bind to authenticated user name when available
     const newPost = await Post.create({
       title,
       content,
-      author: author || 'Guest'
+      author: (req.user && req.user.name) || author || 'Guest'
     });
 
     res.status(201).json({
