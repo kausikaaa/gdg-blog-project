@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000', // backend port from .env
+        target: 'https://gdg-blog-project.onrender.com/', // backend port from .env
         changeOrigin: true,
       },
     },
