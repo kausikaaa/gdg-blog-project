@@ -61,7 +61,7 @@ const SinglePost = () => {
   };
 
   // Check if current user is the author
-  const isAuthor = isAuthenticated && user && post && user._id === post.authorId;
+  const isAuthor = isAuthenticated && user && post && user.name === post.author;
 
   // Loading spinner component
   const LoadingSpinner = () => (
