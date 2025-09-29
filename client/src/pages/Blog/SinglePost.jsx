@@ -121,7 +121,7 @@ const SinglePost = () => {
   if (!post) return <NotFound />;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back button */}
         <div className="mb-6">
@@ -137,13 +137,14 @@ const SinglePost = () => {
         </div>
 
         {/* Article */}
-        <article className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <article className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-800">
           {/* Header */}
-          <div className="px-6 py-8 border-b border-gray-200">
+          <div className="px-6 py-8 border-b border-gray-200 dark:border-gray-700">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
               {post.title}
             </h1>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-600">
+            <div className="h-1 w-16 bg-accent rounded-full mb-4" />
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-center mb-2 sm:mb-0">
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -162,8 +163,8 @@ const SinglePost = () => {
             {isAuthor && (
               <div className="mt-4 flex gap-3">
                 <Link
-                  to={`/edit-post/${id}`}
-                  className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors duration-200"
+                  to={`/edit/${id}`}
+                  className="inline-flex items-center px-4 py-2 rounded-md bg-accent text-white text-sm font-medium hover:bg-accent/90 transition-colors duration-200"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -173,7 +174,7 @@ const SinglePost = () => {
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
                   disabled={deleting}
-                  className="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center px-4 py-2 rounded-md bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-red-500 dark:hover:bg-red-400"
                 >
                   {deleting ? (
                     <>
@@ -198,22 +199,22 @@ const SinglePost = () => {
 
           {/* Content */}
           <div className="px-6 py-8">
-            <div className="prose prose-lg max-w-none">
-              <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+            <div className="prose prose-lg max-w-none dark:prose-invert">
+              <div className="text-gray-700 leading-relaxed whitespace-pre-wrap dark:text-gray-200">
                 {post.content}
               </div>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+          <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700">
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-gray-500 dark:text-gray-400">
                 Published on {formatDate(post.datePosted)}
               </div>
               <Link
                 to="/"
-                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors duration-200"
+                className="btn-primary"
               >
                 View All Posts
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

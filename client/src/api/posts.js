@@ -35,7 +35,12 @@ export const fetchPostById = async (id) => {
 // Create a new post
 export const createPost = async (postData) => {
   try {
-    const response = await api.post('/api/posts', postData);
+    const token = localStorage.getItem('token');
+    const response = await api.post('/api/posts', postData, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
     return response.data;
   } catch (error) {
     console.error('Error creating post:', error);

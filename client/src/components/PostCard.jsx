@@ -14,20 +14,20 @@ const PostCard = ({ post }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-200">
+    <div className="card rounded-2xl transition-colors shadow-card hover:shadow-cardHover duration-300 p-5 sm:p-6 border hover:border-accent/40 hover:bg-white/95 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800/90">
       <div className="mb-4">
-        <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
           {post.title}
         </h2>
-        <div className="flex items-center text-sm text-gray-600 mb-3">
+        <div className="flex flex-wrap items-center gap-x-2 text-sm text-gray-600 dark:text-gray-300 mb-3">
           <span className="font-medium">By {post.author}</span>
-          <span className="mx-2">•</span>
+          <span className="hidden sm:inline">•</span>
           <span>{formatDate(post.datePosted)}</span>
         </div>
       </div>
       
       <div className="mb-4">
-        <p className="text-gray-700 line-clamp-3">
+        <p className="text-gray-700 dark:text-gray-200 line-clamp-4 sm:line-clamp-3">
           {post.content}
         </p>
       </div>
@@ -35,7 +35,7 @@ const PostCard = ({ post }) => {
       <div className="flex justify-end">
         <Link
           to={`/posts/${post._id}`}
-          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors duration-200"
+          className="btn-primary"
         >
           Read More
           <svg

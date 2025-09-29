@@ -65,7 +65,7 @@ const EditPost = () => {
       await updatePost(id, formData);
       
       // Redirect to single post page on success
-      navigate(`/post/${id}`);
+      navigate(`/posts/${id}`);
     } catch (err) {
       console.error('Error updating post:', err);
       const errorMessage = err.response?.data?.message || 'Failed to update post. Please try again.';
@@ -156,13 +156,13 @@ const EditPost = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center mb-4">
             <Link
-              to={`/post/${id}`}
+              to={`/posts/${id}`}
               className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 mr-4"
             >
               <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -171,12 +171,12 @@ const EditPost = () => {
               Back to Post
             </Link>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">Edit Post</h1>
-          <p className="text-gray-600 mt-2">Update your post content and title</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Edit Post</h1>
+          <p className="text-gray-600 mt-2 dark:text-gray-300">Update your post content and title</p>
         </div>
 
         {/* Form */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-cardLg hover:shadow-cardHover border border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-gray-700">
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             {/* Error Message */}
             {error && (
@@ -196,7 +196,7 @@ const EditPost = () => {
 
             {/* Title Field */}
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Title *
               </label>
               <input
@@ -206,14 +206,14 @@ const EditPost = () => {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Enter your post title"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="input"
                 required
               />
             </div>
 
             {/* Content Field */}
             <div>
-              <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Content *
               </label>
               <textarea
@@ -223,23 +223,23 @@ const EditPost = () => {
                 onChange={handleChange}
                 placeholder="Write your post content here..."
                 rows={12}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-vertical"
+                className="input resize-vertical"
                 required
               />
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-end space-x-4">
+            <div className="flex flex-col sm:flex-row justify-end gap-3 sm:space-x-4">
               <Link
-                to={`/post/${id}`}
-                className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                to={`/posts/${id}`}
+                className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-colors duration-200 dark:text-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800"
               >
                 Cancel
               </Link>
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 flex items-center"
+                className="btn-primary px-6 py-2 flex items-center justify-center w-full sm:w-auto"
               >
                 {submitting ? (
                   <>

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { fetchAllPosts } from '../../api/posts';
 import PostCard from '../../components/PostCard';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -61,12 +64,17 @@ const HomePage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Blog Posts</h1>
-          <p className="text-gray-600">Discover the latest stories and insights</p>
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2 dark:text-white">Blog Posts</h1>
+            <p className="text-gray-600 dark:text-gray-300">Discover the latest stories and insights</p>
+          </div>
+          {isAuthenticated && (
+            <Link to="/create" className="btn-primary hidden sm:inline-flex">New Post</Link>
+          )}
         </div>
 
         {/* Content */}
