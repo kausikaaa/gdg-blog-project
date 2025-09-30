@@ -15,8 +15,8 @@ const Navbar = () => {
           {/* Left: Logo/Title */}
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white font-bold">B</span>
-              <span className="text-lg font-semibold">Blog</span>
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white font-bold">S</span>
+              <span className="text-lg font-semibold">Scrib</span>
             </Link>
           </div>
           {/* Center: Primary Links */}
