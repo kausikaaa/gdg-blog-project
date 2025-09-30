@@ -11,39 +11,43 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-40 bg-white/60 backdrop-blur-lg supports-[backdrop-filter]:bg-white/50 border-b border-white/40 ring-1 ring-black/5 shadow-sm dark:bg-gray-900/50 dark:supports-[backdrop-filter]:bg-gray-900/40 dark:border-white/10 dark:ring-white/10">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-3 items-center h-16">
-          {/* Left: Logo/Title */}
-          <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white font-bold">B</span>
-              <span className="text-lg font-semibold">Blog</span>
+        <div className="flex items-center justify-center h-16">
+          {/* Centered Brand */}
+          <div className="text-center">
+            <Link to="/" className="group">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="inline-flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-brand-600 text-white font-bold text-lg sm:text-xl group-hover:bg-brand-700 transition-colors duration-200">S</span>
+                <span className="text-2xl sm:text-3xl font-bold text-brand-600 group-hover:text-brand-700 transition-colors duration-200 dark:text-brand-400 dark:group-hover:text-brand-300">Scrib</span>
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium tracking-wide">build your narrative.</p>
             </Link>
           </div>
-          {/* Center: Primary Links */}
-          <div className="hidden sm:flex items-center justify-center gap-2 sm:gap-4">
+        </div>
+        
+        {/* Navigation Links - Below Brand */}
+        <div className="flex items-center justify-center gap-2 sm:gap-4 py-4 border-t border-gray-200 dark:border-gray-700">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-accent bg-accent/10 dark:text-accent/90 dark:bg-accent/10' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-white/5'}`
+            }
+            end
+          >
+            Home
+          </NavLink>
+          {isAuthenticated && (
             <NavLink
-              to="/"
+              to="/create"
               className={({ isActive }) =>
                 `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-accent bg-accent/10 dark:text-accent/90 dark:bg-accent/10' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-white/5'}`
               }
-              end
             >
-              Home
+              Create Post
             </NavLink>
-            {isAuthenticated && (
-              <NavLink
-                to="/create"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-accent bg-accent/10 dark:text-accent/90 dark:bg-accent/10' : 'text-gray-800 hover:text-gray-900 hover:bg-white/50 dark:text-gray-200 dark:hover:text-white dark:hover:bg-white/5'}`
-                }
-              >
-                Create Post
-              </NavLink>
-            )}
-          </div>
-
-          {/* Right: Theme toggle + Auth */}
-          <div className="flex items-center justify-end gap-2">
+          )}
+          
+          {/* Theme toggle + Auth - Moved to center */}
+          <div className="flex items-center gap-2 ml-4">
             <button
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
@@ -63,7 +67,7 @@ const Navbar = () => {
               )}
             </button>
             <button
-              className="sm:hidden px-2 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+              className="px-2 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
               aria-label="Toggle navigation menu"
               onClick={() => setMobileOpen((v) => !v)}
             >
@@ -93,7 +97,7 @@ const Navbar = () => {
           </div>
         </div>
         {mobileOpen && (
-          <div className="sm:hidden pb-4">
+          <div className="pb-4">
             <div className="mt-2 space-y-1">
               <NavLink
                 to="/"
